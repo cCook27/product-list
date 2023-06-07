@@ -1,15 +1,29 @@
 
 
-export const fetchDataSuccess = data => (
+export const fetchDataSuccess = (data) => (
   {
     type: 'FETCH_DATA_SUCCESS',
     payload: data
   }
 );
 
-export const queryObject = data => (
+export const fetchDataRequest = () => (
   {
-    type: 'QUERY_OBJECT',
-    payload: data
+    type: 'FETCH_DATA_REQUEST',
   }
 );
+
+export const updateQueryObject = (queryObject) => (
+  {
+    type: 'UPDATE_QUERY_OBJECT',
+    payload: queryObject
+  }
+);
+
+export const fetchDataError = (error) => (
+  {
+    type: 'FETCH_DATA_ERROR',
+    payload: error
+  }
+);
+

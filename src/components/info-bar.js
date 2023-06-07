@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { queryObject } from "../actions/actions";
+import { updateQueryObject } from "../actions/actions";
 
-function InfoBar({handleQueryObject}) {
+function InfoBar() {
 
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ function InfoBar({handleQueryObject}) {
       price: event.target.price.value
     }
 
-    handleQueryObject(eventObject);
+    dispatch(updateQueryObject(eventObject));
   }
 
 

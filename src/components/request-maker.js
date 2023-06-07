@@ -1,34 +1,40 @@
-// import React from 'react';
-import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { fetchDataSuccess } from '../actions/actions';
 
-function RequestMaker({queryObject}) {
+function RequestMaker() {
   const dispatch = useDispatch();
 
-  const fetchData = async (queryObject) => {
-    try {
-      let keyword = queryObject.keyword;
-      let category = queryObject.category;
-      let price = queryObject.price;
+  const state = useSelector((state) => state.queryObject)
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let keyword = state.keyword;
+        let category = state.category;
+        let price = state.price;
+  
+  
+        const response = await fetch(`http://localhost:8000/products`);
+  
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+  
+        const data = await response.json();
+  
+        dispatch(fetchDataSuccess(data));
+  
+      } catch (error) {
+        console.log(error)
+        } 
+    };
 
-      const response = await fetch(`http://localhost:8000/products`);
+    fetchData();
+  }, [dispatch, state]); 
 
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
-
-      const data = await response.json();
-
-      dispatch(fetchDataSuccess(data));
-
-    } catch (error) {
-      console.log(error)
-      } 
-  };
-
-  fetchData(queryObject);
+  return null;
+   
 }
 
 export default RequestMaker;
