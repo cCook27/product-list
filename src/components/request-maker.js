@@ -24,7 +24,7 @@ function RequestMaker({queryObject}) {
       dispatch(fetchDataSuccess(data));
 
     } catch (error) {
-      console.log(error);
+      console.log(error)
       } 
   };
 
