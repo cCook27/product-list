@@ -24,7 +24,9 @@ function InfoBar() {
     <form onSubmit={handleSearch}>
       <input type="text" placeholder="Search..." name='search' />
       <select name='category'>
-        <option>Category</option>
+        <option></option>
+        <option>tools</option>
+        <option>grocery</option>
       </select>
       <select name='price'>
         <option></option>

@@ -1,7 +1,7 @@
 import { UPDATE_QUERY_OBJECT, FETCH_DATA_REQUEST, FETCH_DATA_ERROR, FETCH_DATA_SUCCESS } from '../actions/actions';
 
 const initialState = {
-  data: null,
+  data: [],
   queryObject: {
     keyword: '',
     category: '',
@@ -26,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
     case 'FETCH_DATA_ERROR':
       return {
         ...state,
+        data: [],
         loading: false,
         error: action.payload,
       }; 
@@ -33,6 +34,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        error: null,
         data: action.payload,
       };  
     default:

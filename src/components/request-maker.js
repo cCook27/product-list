@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchDataSuccess } from '../actions/actions';
+import { fetchDataSuccess, fetchDataError, fetchDataRequest } from '../actions/actions';
 
 function RequestMaker() {
   const dispatch = useDispatch();
@@ -14,11 +14,12 @@ function RequestMaker() {
         let category = state.category;
         let price = state.price;
   
+        dispatch(fetchDataRequest());
   
-        const response = await fetch(`http://localhost:8000/products`);
+        const response = await fetch(`http://localhost:8000/products?category=${category}&query=${keyword}&price=${price}`);
   
         if (!response.ok) {
-          throw new Error('Request failed');
+          dispatch(fetchDataError(`Oops! Error: ${response.status} Products ${response.statusText}`));
         }
   
         const data = await response.json();
