@@ -1,0 +1,32 @@
+.card-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 100px;
+  justify-content: center;
+}
+
+.card-container .card {
+  width: 18rem;
+  border: 1px solid black;
+}
+
+.card .price {
+  display: flex;
+  justify-content: right;
+  height: 10px;
+  font-weight: 600;
+}
+
+.error {
+  color: red;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.loading {
+  color: #003271;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}

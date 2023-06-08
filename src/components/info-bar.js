@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { updateQueryObject } from "../actions/actions";
+import '../component-css/info-bar.css'
 
 function InfoBar() {
 
@@ -21,20 +22,23 @@ function InfoBar() {
 
 
   return (
-    <form onSubmit={handleSearch}>
-      <input type="text" placeholder="Search..." name='search' />
-      <select name='category'>
-        <option></option>
-        <option>tools</option>
-        <option>grocery</option>
-      </select>
-      <select name='price'>
-        <option></option>
-        <option>Highest</option>
-        <option>Lowest</option>
-      </select>
-      <button type="submit">Search</button>
-    </form>
+    <div className='form-container'>
+      <form className='form' onSubmit={handleSearch}>
+        <input className='query' type="text" placeholder="Search..." name='search' />
+        <select className='query option' name='category'>
+          <option></option>
+          <option>tools</option>
+          <option>grocery</option>
+        </select>
+        <select className='query option' name='price'>
+          <option></option>
+          <option>Highest</option>
+          <option>Lowest</option>
+        </select>
+        <button className='submit' type="submit">Search</button>
+      </form>
+    </div>
+    
   );
 }
 

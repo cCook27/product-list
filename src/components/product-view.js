@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from 'react-bootstrap/Card';
+import '../component-css/product-view.css'
 
 function ProductView() {
   const [error, setError] = useState(null);
@@ -32,24 +33,29 @@ function ProductView() {
   if(!loading) {
     cardCreator = productData.map((product) => {
       return (
-        <Card style={{ width: '18rem' }} key={product._id}>
-          <Card.Img variant="top" src={product.image} />
-          <Card.Body>
-            <Card.Title>{product.name}</Card.Title>
-            <Card.Text>
-              {product.category}, {product.price}
+          <Card className="card" key={product._id}>
+            <Card.Text className='price'>
+              ${product.price}
             </Card.Text>
-          </Card.Body>
-        </Card>
+            <Card.Img variant="top" src={product.image} />
+            <Card.Body>
+              <Card.Title>{product.name}</Card.Title>
+              <Card.Text>
+                {product.category}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        
+        
       );
     });
   }
 
   return (
     <div>
-      <div className='error'>{error}</div>
       <div className='loading'>{loading}</div>
-      <div className='cards'>{cardCreator}</div>
+      <div className='error'>{error}</div>
+      <div className='card-container'>{cardCreator}</div>
     </div>
   );
 }
