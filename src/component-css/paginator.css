@@ -7,4 +7,10 @@
 
 .pages-container .pages {
   margin-left: 5px;
+  cursor: pointer;
+}
+
+.pages:active {
+  transform: translateY(2px);
+  color: #003271;
 }
