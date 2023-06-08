@@ -45,8 +45,6 @@ function ProductView() {
               </Card.Text>
             </Card.Body>
           </Card>
-        
-        
       );
     });
   }

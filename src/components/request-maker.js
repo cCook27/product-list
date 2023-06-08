@@ -5,7 +5,8 @@ import { fetchDataSuccess, fetchDataError, fetchDataRequest } from '../actions/a
 function RequestMaker() {
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.queryObject)
+  const state = useSelector((state) => state.queryObject);
+  const page = useSelector((state) => state.page);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +17,7 @@ function RequestMaker() {
   
         dispatch(fetchDataRequest());
   
-        const response = await fetch(`http://localhost:8000/products?category=${category}&query=${keyword}&price=${price}`);
+        const response = await fetch(`http://localhost:8000/products?page=${page}&category=${category}&query=${keyword}&price=${price}`);
   
         if (!response.ok) {
           dispatch(fetchDataError(`Oops! Error: ${response.status} Products ${response.statusText}`));
@@ -32,7 +33,7 @@ function RequestMaker() {
     };
 
     fetchData();
-  }, [dispatch, state]); 
+  }, [dispatch, state, page]); 
 
   return null;
    

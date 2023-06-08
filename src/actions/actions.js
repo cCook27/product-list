@@ -20,10 +20,19 @@ export const updateQueryObject = (queryObject) => (
   }
 );
 
+export const updatePageQuery = (page) => (
+  {
+    type: 'UPDATE_PAGE_QUERY',
+    payload: page
+  }
+);
+
 export const fetchDataError = (error) => (
   {
     type: 'FETCH_DATA_ERROR',
     payload: error
   }
 );
+
+
 

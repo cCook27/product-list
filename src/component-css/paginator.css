@@ -1,0 +1,10 @@
+.pages-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pages-container .pages {
+  margin-left: 5px;
+}

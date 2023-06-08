@@ -2,6 +2,8 @@ import { UPDATE_QUERY_OBJECT, FETCH_DATA_REQUEST, FETCH_DATA_ERROR, FETCH_DATA_S
 
 const initialState = {
   data: [],
+  count: null,
+  page: null,
   queryObject: {
     keyword: '',
     category: '',
@@ -17,6 +19,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         queryObject: action.payload,
+      };
+    case 'UPDATE_PAGE_QUERY':
+      return {
+        ...state,
+        page: action.payload,
       };
     case 'FETCH_DATA_REQUEST':
       return {
@@ -35,7 +42,8 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        data: action.payload,
+        data: action.payload.products,
+        count: action.payload.count,
       };  
     default:
       return state;
